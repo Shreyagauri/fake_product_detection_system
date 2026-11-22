@@ -1,0 +1,155 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manufacturer Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/manufacturer_login.css') }}">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <h1>Manufacturer Login</h1>
+
+        <p class="subtitle">
+            Fake Product Detection System
+        </p> -->
+
+        <!-- Flask flash message -->
+     <!--  {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('manufacturer_login') }}" method="POST">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="login-btn">
+                Login
+            </button>
+
+        </form>
+
+        <p class="bottom-text">
+            New manufacturer?
+            <a href="{{ url_for('manufacturer_dashboard') }}">
+                Register here
+            </a>
+        </p>
+
+    </div>
+
+</body>
+</html>            -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manufacturer Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/manufacturer_login.css') }}">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <h1>Manufacturer Login</h1>
+
+        <p class="subtitle">
+            Fake Product Detection System
+        </p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('manufacturer_login') }}" method="POST">
+
+            <div class="form-group">
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="login-btn">
+                Login
+            </button>
+
+        </form>
+
+        <p class="bottom-text">
+            New manufacturer?
+            <a href="{{ url_for('register') }}">
+                Register here
+            </a>
+        </p>
+
+    </div>
+
+</body>
+</html>

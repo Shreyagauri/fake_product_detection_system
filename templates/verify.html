@@ -1,0 +1,197 @@
+
+<!--   <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Product | TrueMark</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/add_product.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Add Product</h1>
+
+        <p class="subtitle">
+            Register a new product in the system
+        </p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
+        <form action="{{ url_for('add_product') }}" method="POST">
+
+            <div class="form-group">
+
+                <label for="product_name">
+                    Product Name
+                </label>
+
+                <input
+                    type="text"
+                    id="product_name"
+                    name="product_name"
+                    placeholder="Enter product name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="product_id">
+                    Product ID
+                </label>
+
+                <input
+                    type="text"
+                    id="product_id"
+                    name="product_id"
+                    placeholder="Enter unique product ID"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit">
+                Add Product
+            </button>
+
+        </form>
+
+
+        <a href="{{ url_for('manufacturer_dashboard') }}"
+           class="back-link">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</body>
+
+</html>     -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Verify Product</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/verify.css') }}">
+</head>
+
+<body>
+
+    <div class="verify-container">
+
+        <h1>Verify Product</h1>
+
+        <p class="subtitle">
+            Enter the Product ID to check product authenticity.
+        </p>
+
+
+        {% if result %}
+
+            <div class="result
+                {% if result.status == 'Genuine' %}
+                    genuine
+                {% else %}
+                    fake
+                {% endif %}
+            ">
+
+                <h2>{{ result.status }}</h2>
+
+                {% if result.status == "Genuine" %}
+
+                    <p>
+                        Product Name:
+                        <strong>{{ result.product_name }}</strong>
+                    </p>
+
+                    <p>
+                        Product ID:
+                        <strong>{{ result.product_id }}</strong>
+                    </p>
+
+                    <p>
+                        This product is registered in our system.
+                    </p>
+
+                {% else %}
+
+                    <p>
+                        No registered product was found with this Product ID.
+                    </p>
+
+                    <p>
+                        The product could not be verified.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+
+
+        <form action="{{ url_for('verify') }}" method="POST">
+
+            <div class="form-group">
+
+                <label for="product_id">
+                    Product ID
+                </label>
+
+                <input
+                    type="text"
+                    id="product_id"
+                    name="product_id"
+                    placeholder="Enter Product ID"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit">
+                Verify Product
+            </button>
+
+        </form>
+
+
+        <a href="{{ url_for('home') }}" class="back-link">
+            Back to Home
+        </a>
+
+    </div>
+
+</body>
+
+</html>
+

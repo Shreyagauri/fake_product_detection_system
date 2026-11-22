@@ -1,0 +1,82 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}">
+</head>
+<body>
+    <form class="register-form">
+        <h2> Register </h2>
+        <input type="text" placeholder="enter your name">
+        <input type="email" placeholder="enter email">
+        <input type="password" placeholder="enter password">
+        <button type="button"> Register </button>
+
+    </form>
+    
+</body>
+</html>              -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manufacturer Registration</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/register.css') }}">
+</head>
+
+<body>
+
+    <form class="register-form"
+          method="POST"
+          action="{{ url_for('register') }}">
+
+        <h2>Manufacturer Registration</h2>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="message">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <input
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            required
+        >
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            required
+        >
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            required
+        >
+
+        <button type="submit">Register</button>
+
+        <p>
+            Already registered?
+            <a href="{{ url_for('manufacturer_login') }}">Login here</a>
+        </p>
+
+    </form>
+
+</body>
+</html>

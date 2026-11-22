@@ -1,0 +1,18 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+body{
+    background-color: azure;
+    box-sizing: border-box;
+}
+h1{
+    color: black;
+    font-family: sans-serif;
+    font-size: larger;
+    font-weight: 600;
+}
+p{
+    color: black;
+    
+}

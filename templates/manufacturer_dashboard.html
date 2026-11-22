@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manufacturer Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/manufacturer_dashboard.css') }}">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Manufacturer Dashboard</h1>
+                <p>Manage your registered products</p>
+            </div>
+
+            <a href="{{ url_for('add_product') }}"
+               class="add-btn">
+                + Add Product
+            </a>
+
+        </header>
+
+
+        {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="message">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        <section class="products-section">
+
+            <h2>Registered Products</h2>
+
+            {% if products %}
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Product Name</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {% for product in products %}
+
+                                <tr>
+                                    <td>
+                                        {{ product.product_id }}
+                                    </td>
+
+                                    <td>
+                                        {{ product.product_name }}
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            {% else %}
+
+                <div class="no-products">
+
+                    <p>No products registered yet.</p>
+
+                    <a href="{{ url_for('add_product') }}">
+                        Add your first product
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+    </div>
+
+</body>
+
+</html>
